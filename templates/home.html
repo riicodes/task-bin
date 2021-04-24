@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}TaskBin{% endblock title %}
+{% block content %}
+	<main class="home text-center">
+		{% if user.is_authenticated %}
+			<h1>Welcome back {{ user.username }}!</h1>
+			<h2 class="mt-3">You have {{ user.task_set.count }} tasks.</h2>
+			<a href="{% url 'current' %}" class="btn btn-outline-dark mt-5">View Current Tasks</a>
+		{% else %}
+			<h1>Welcome to TaskBin</h1>
+			<h2 class="mt-3">Here you can create, complete and delete your tasks!</h2>
+			<a href="{% url 'register' %}" class="btn btn-outline-dark mt-5">Get Started</a>
+		{% endif %}
+	</main>
+{% endblock content %}

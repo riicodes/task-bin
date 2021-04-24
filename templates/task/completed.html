@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block completed %}active{% endblock completed %}
+{% block title %}Completed Tasks{% endblock title %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            {% for task in tasks %}
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card text-center task-card">
+                        <div class="card-header {% if task.important %}urgent-task{% else %}normal-task{% endif %}">
+                            {{ task.title }}
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ task.description|truncatechars:20 }}</p>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <small><i class="fas fa-check-circle me-1"></i> {{ task.completed|date:'g:i a' }}
+                                &#183; {{ task.completed|date:'j M y' }}</small>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+    <main class="container">
+        <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 form">
+            {% if error %}
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ error }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endif %}
+            <div class="card text-secondary">
+                <div class="card-header">
+                    <h1>{{ task.title }} detail</h1>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="mt-4">
+                            <button type="submit" class="btn btn-outline-primary me-1">Update</button>
+                            <button type="button" class="btn btn-outline-success me-1" onclick="$('#complete').click()">
+                                Complete
+                            </button>
+                            <button type="button" class="btn btn-outline-danger me-1" onclick="$('#delete').click()">Delete
+                            </button>
+                        </div>
+                    </form>
+
+                    <form style='display: none;' action="{% url 'complete' task.id %}" method="POST">
+                        {% csrf_token %}
+                        <button id="complete" type="submit" class="btn btn-outline-secondary mt-4">Complete</button>
+                    </form>
+                    <form style='display: none;' action="{% url 'delete' task.id %}" method="POST">
+                        {% csrf_token %}
+                        <button id="delete" type="submit" class="btn btn-outline-secondary mt-4">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

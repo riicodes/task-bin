@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
+
+.navbar-brand {
+    font-family: 'Architects Daughter', cursive;
+}
+
+.container {
+    margin-top: 25px;
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-family: 'Lato', sans-serif;
+}
+
+a {
+    color: #303d56;
+}
+
+
+.card-header, .card-footer {
+    background-color: white;
+}
+
+form .card-header {
+    border-bottom: none;
+}
+
+.normal-task {
+    background-color: #b2e1e1;
+}
+
+.card-footer {
+    border-top: none;
+}
+
+.task-card {
+    height: 150px;
+    margin-bottom: 15px;
+}
+
+.task-card a {
+    text-decoration: none;
+    color: #303d56;
+}
+
+.urgent-task {
+    background-color: #d723234a;
+}
+
+.home h1 {
+    font-family: 'Roboto Slab', serif;
+    font-size: 2.5rem;
+}
+
+.home h2 {
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+main.home {
+    margin-top: 200px;
+}

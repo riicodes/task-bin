@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block current %}active{% endblock current %}
+{% block title %}Current Tasks{% endblock title %}
+
+{% block content %}
+    <main class="container">
+        <div class="row">
+            {% for task in tasks %}
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card text-center task-card">
+                        <div class="card-header {% if task.important %}urgent-task{% else %}normal-task{% endif %}">
+							<a href="{% url 'detail' task.id %}" class="stretched-link">{{ task.title }}</a>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ task.description|truncatechars:20 }}</p>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <small><i class="fas fa-pencil-alt me-2"></i>{{ task.created|date:'g:i a' }}
+                                &#183; {{ task.created|date:'j M y' }}</small>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="text-center mt-5">
+                    <h2>You are all caught up!</h2>
+                    <a>Create Task</a>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock content %}
